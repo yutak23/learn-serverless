@@ -1,0 +1,17 @@
+{
+	"name": "serverless",
+	"version": "1.0.0",
+	"description": "serverlessFW-learning",
+	"main": "index.js",
+	"author": "yuta-katayama-23",
+	"license": "MIT",
+	"scripts": {
+		"dev": "npx sls offline",
+		"style:fix": "prettier --write ."
+	},
+	"devDependencies": {
+		"prettier": "^2.6.2",
+		"serverless": "^3.12.0",
+		"serverless-offline": "^8.5.0"
+	}
+}
