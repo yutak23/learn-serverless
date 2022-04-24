@@ -10,7 +10,8 @@
 		"deploy": "npx sls deploy --region ap-northeast-1",
 		"eslint:check": "npx eslint .",
 		"eslint:fix": "npx eslint --fix .",
-		"style:fix": "npx prettier --write ."
+		"style:fix": "npx prettier --write .",
+		"prepare": "npx simple-git-hooks"
 	},
 	"devDependencies": {
 		"eslint": "^8.13.0",
@@ -19,8 +20,16 @@
 		"eslint-plugin-import": "^2.26.0",
 		"eslint-plugin-jest": "^26.1.4",
 		"jest": "^27.5.1",
+		"lint-staged": "^12.4.0",
 		"prettier": "^2.6.2",
 		"serverless": "^3.12.0",
-		"serverless-offline": "^8.5.0"
+		"serverless-offline": "^8.5.0",
+		"simple-git-hooks": "^2.7.0"
+	},
+	"simple-git-hooks": {
+		"pre-commit": "npx lint-staged"
+	},
+	"lint-staged": {
+		"*": "npx prettier --ignore-unknown --write"
 	}
 }
