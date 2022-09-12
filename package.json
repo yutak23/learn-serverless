@@ -1,13 +1,14 @@
 {
-	"name": "serverless",
+	"name": "aws-node-serverless-project",
 	"version": "1.0.0",
-	"description": "serverlessFW-learning",
+	"description": "serverless FW learning project",
 	"main": "index.js",
 	"author": "yuta-katayama-23",
 	"license": "MIT",
 	"scripts": {
 		"dev": "npx sls offline",
 		"deploy": "npx sls deploy --region ap-northeast-1",
+		"invoke:local": "npx sls invoke local --function hello",
 		"eslint:check": "npx eslint .",
 		"eslint:fix": "npx eslint --fix .",
 		"style:fix": "npx prettier --write .",

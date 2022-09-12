@@ -1,4 +1,4 @@
-service: aws-node-project
+service: aws-node-serverless-project
 
 frameworkVersion: '3'
 
