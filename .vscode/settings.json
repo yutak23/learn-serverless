@@ -4,5 +4,6 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
 	},
-	"editor.renderWhitespace": "all"
+	"editor.renderWhitespace": "all",
+	"jest.autoRun": "off"
 }
