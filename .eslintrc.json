@@ -1,7 +1,14 @@
 {
 	"root": true,
 	"env": {
-		"es2021": true
+		"es2022": true
+	},
+	"settings": {
+		"import/resolver": {
+			"webpack": {
+				"config": "webpack.config.js"
+			}
+		}
 	},
 	"extends": [
 		"eslint:recommended",

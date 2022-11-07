@@ -4,11 +4,20 @@ frameworkVersion: '3'
 
 provider:
   name: aws
-  runtime: nodejs14.x
+  region: ap-northeast-1
+  runtime: nodejs16.x
 
 plugins:
+  - serverless-webpack
   - serverless-offline
+
+custom:
+  webpack:
+    includeModules: true
+    packager: 'yarn'
 
 functions:
   hello:
-    handler: handler.hello
+    name: hello-lambda
+    handler: ./src/lambda.handler
+    timeout: 5
