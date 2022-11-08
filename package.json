@@ -7,6 +7,7 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "sls offline start",
+		"debug": "SLS_DEBUG=* && node --inspect node_modules/serverless/bin/serverless offline start",
 		"package": "sls package",
 		"deploy": "sls deploy",
 		"invoke:local": "sls invoke local --function hello",
