@@ -3,7 +3,7 @@ service: aws-node-serverless-project
 frameworkVersion: '3'
 
 provider:
-  stage: ${self:custom.defaultStage}
+  stage: ${opt:stage, self:custom.defaultStage}
   name: aws
   region: ap-northeast-1
   runtime: nodejs16.x
@@ -23,3 +23,5 @@ functions:
     name: hello-lambda-${sls:stage}
     handler: ./src/lambda.handler
     timeout: 5
+    environment:
+      ENV: ${file(./env/${self:provider.stage}.json):ENV}

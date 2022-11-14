@@ -8,8 +8,8 @@
 	"scripts": {
 		"dev": "sls offline start",
 		"debug": "SLS_DEBUG=* && node --inspect node_modules/serverless/bin/serverless offline start",
-		"package": "sls package",
-		"deploy": "sls deploy",
+		"package": "sls package --stage production",
+		"deploy": "sls deploy --stage production",
 		"invoke:local": "sls invoke local --function hello",
 		"aws.lambda.invoke": "aws lambda invoke --payload '{ \"name\": \"Bob\" }' --endpoint-url http://localhost:3002 --function-name hello-lambda --cli-binary-format raw-in-base64-out response.json",
 		"eslint:check": "eslint .",
