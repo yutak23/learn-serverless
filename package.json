@@ -8,10 +8,11 @@
 	"scripts": {
 		"dev": "sls offline start",
 		"debug": "SLS_DEBUG=* && node --inspect node_modules/serverless/bin/serverless offline start",
-		"package": "sls package --stage production",
+		"package": "sls package --stage production --param=fromEmailAddress=******@outlook.jp --param=toEmailAddress=******@gmail.com",
 		"deploy": "sls deploy --stage production",
 		"invoke:local": "sls invoke local --function hello",
-		"aws.lambda.invoke": "aws lambda invoke --payload '{ \"name\": \"Bob\" }' --endpoint-url http://localhost:3002 --function-name hello-lambda --cli-binary-format raw-in-base64-out response.json",
+		"aws.lambda.invoke": "aws lambda invoke --payload '{ \"name\": \"Bob\" }' --endpoint-url http://localhost:3002 --function-name hello-lambda-local --cli-binary-format raw-in-base64-out response.json",
+		"aws.sqs.send-message": "aws sqs send-message --queue-url https://sqs.ap-northeast-1.amazonaws.com/**********/aws-node-serverless-project-production-sqs2ses-queue --message-body '{\"mailTo\": \"******@gmail.com\", \"bodtText\": \"test\", \"subject\": \"テスト送信\", \"mailFrom\": \"******@outlook.jp\" }'",
 		"eslint:check": "eslint .",
 		"eslint:fix": "eslint --fix .",
 		"style:fix": "prettier --write .",
@@ -19,7 +20,9 @@
 		"prepare": "npx simple-git-hooks"
 	},
 	"dependencies": {
-		"nanoid": "^3.3.4"
+		"@aws-sdk/client-sesv2": "^3.213.0",
+		"nanoid": "^3.3.4",
+		"winston": "^3.8.2"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.19.6",
@@ -37,6 +40,7 @@
 		"npm-check-updates": "^16.3.16",
 		"prettier": "^2.7.1",
 		"serverless": "^3.23.0",
+		"serverless-lift": "^1.20.2",
 		"serverless-offline": "^11.2.3",
 		"serverless-webpack": "^5.10.0",
 		"simple-git-hooks": "^2.8.1",
