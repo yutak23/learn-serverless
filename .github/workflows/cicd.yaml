@@ -30,4 +30,4 @@ jobs:
       - name: deploy
         run: |
           yarn install --frozen-lockfile
-          yarn deploy
+          yarn deploy --param=fromEmailAddress=${{ secrets.FROM_EMAIL_ADDRESS }} --param=toEmailAddress=${{ secrets.TO_EMAIL_ADDRESS }}
