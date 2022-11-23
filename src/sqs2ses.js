@@ -71,7 +71,11 @@ export const handler = async (event) => {
 	assert.ok(region, 'region must be required');
 	assert.ok(sesIdentityArn, 'sesIdentityArn must be required');
 
-	const sesClient = new SESv2Client({ region });
+	const isLocal = stage === 'local';
+
+	const sesClient = new SESv2Client(
+		isLocal ? { endpoint: 'http://localhost:8005', region } : { region }
+	);
 
 	try {
 		await Promise.all(
