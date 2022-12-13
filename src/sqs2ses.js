@@ -21,9 +21,9 @@ const sendmail = async (options = {}) => {
 
 	const body = JSON.parse(jsonStringBody);
 
-	const { mailTo, bodtText, subject, mailFrom } = body;
+	const { mailTo, bodyText, subject, mailFrom } = body;
 	assert.ok(mailTo, 'mailTo must be required');
-	assert.ok(bodtText, 'bodtText must be required');
+	assert.ok(bodyText, 'bodyText must be required');
 	assert.ok(subject, 'subject must be required');
 	assert.ok(mailFrom, 'mailFrom must be required');
 
@@ -34,9 +34,9 @@ const sendmail = async (options = {}) => {
 		Content: {
 			Simple: {
 				Body: {
-					Text: {
+					Html: {
 						Charset: 'UTF-8',
-						Data: bodtText
+						Data: bodyText
 					}
 				},
 				Subject: {
