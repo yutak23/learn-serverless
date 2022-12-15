@@ -55,6 +55,22 @@ resources:
         QueueName: sqs2ses-dead-queue-${sls:stage}
         MaximumMessageSize: 1024
         MessageRetentionPeriod: 1209600 # 14 days
+    sqsToSeSQueueTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: sqs2ses-queue-table-${sls:stage}
+        AttributeDefinitions:
+          - AttributeName: md5
+            AttributeType: S
+        KeySchema:
+          - AttributeName: md5
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TimeToLiveSpecification:
+          AttributeName: ttl
+          Enabled: true
 
 functions:
   hello:
