@@ -13,7 +13,7 @@
 		"invoke:local": "sls invoke local --function hello",
 		"aws.sqs.send-message:local": "aws sqs send-message --queue-url http://localhost:4566/000000000000/sqs2ses-queue-local --message-body '{\"mailTo\": \"dumy@gmail.com\", \"bodyText\": \"<h1 style=\\\"color: green\\\">テストメールです</h1>\", \"subject\": \"テスト送信\", \"mailFrom\": \"dumy@outlook.jp\", \"createdAt\": 1671083109 }' --endpoint=http://localhost:4566",
 		"aws.lambda.invoke": "aws lambda invoke --payload '{ \"name\": \"Bob\" }' --endpoint-url http://localhost:3002 --function-name hello-lambda-local --cli-binary-format raw-in-base64-out response.json",
-		"aws.sqs.send-message": "aws sqs send-message --queue-url https://sqs.ap-northeast-1.amazonaws.com/**********/sqs2ses-queue-production --message-body '{\"mailTo\": \"******@gmail.com\", \"bodyText\": \"test\", \"subject\": \"テスト送信\", \"mailFrom\": \"******@outlook.jp\", \"createdAt\": 1671083109 }'",
+		"aws.sqs.send-message": "aws sqs send-message --queue-url https://sqs.ap-northeast-1.amazonaws.com/**********/sqs2ses-queue-production --message-body '{\"mailTo\": \"******@gmail.com\", \"bodyText\": \"<h1 style=\\\"color: green\\\">テストメールです</h1>\", \"subject\": \"テスト送信\", \"mailFrom\": \"******@outlook.jp\", \"createdAt\": 1671083109 }'",
 		"aws.dynamodb.create-table": "aws dynamodb create-table --table-name sqs2ses-queue-table-local --attribute-definitions AttributeName=md5,AttributeType=S --key-schema AttributeName=md5,KeyType=HASH --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --endpoint=http://localhost:4566",
 		"aws.dynamodb.scan": "aws dynamodb scan --table-name sqs2ses-queue-table-local --endpoint=http://localhost:4566",
 		"eslint:check": "eslint .",
