@@ -10,9 +10,11 @@
 		"debug": "SLS_DEBUG=* && node --inspect node_modules/serverless/bin/serverless offline start",
 		"package": "sls package --stage production",
 		"deploy": "sls deploy --stage production",
+		"setup": "run-s aws.ssm.put-parameters aws.kinesis.create-stream",
 		"aws.ssm.put-parameters": "run-s aws.ssm.put-parameter.*",
 		"aws.ssm.put-parameter.stripSecretKey": "aws ssm put-parameter --name /stripe_webhook_local/stripe_secret_key --value **** --type SecureString --overwrite --endpoint=http://localhost:4566",
 		"aws.ssm.put-parameter.endpointSecret": "aws ssm put-parameter --name /stripe_webhook_local/stripe_endpoint_secret --value **** --type SecureString --overwrite --endpoint=http://localhost:4566",
+		"aws.kinesis.create-stream": "aws kinesis create-stream --stream-name kinesis-internal-events-local --stream-mode-details StreamMode=PROVISIONED --shard-count 1 --endpoint=http://localhost:4566",
 		"eslint:check": "eslint .",
 		"eslint:fix": "eslint --fix .",
 		"style:fix": "prettier --write .",
@@ -20,8 +22,10 @@
 		"prepare": "npx simple-git-hooks"
 	},
 	"dependencies": {
+		"@aws-sdk/client-kinesis": "^3.232.0",
 		"@aws-sdk/client-ssm": "^3.231.0",
 		"luxon": "^3.1.1",
+		"nanoid": "^3.3.4",
 		"stripe": "^11.4.0",
 		"winston": "^3.8.2"
 	},
@@ -43,6 +47,7 @@
 		"prettier": "^2.8.1",
 		"serverless": "^3.25.1",
 		"serverless-offline": "^12.0.2",
+		"serverless-offline-kinesis": "^6.2.3",
 		"serverless-webpack": "^5.11.0",
 		"simple-git-hooks": "^2.8.1",
 		"webpack": "^5.75.0",

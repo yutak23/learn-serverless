@@ -20,6 +20,7 @@ provider:
 
 plugins:
   - serverless-webpack
+  - serverless-offline-kinesis
   - serverless-offline
 
 custom:
@@ -27,6 +28,11 @@ custom:
   webpack:
     includeModules: true
     packager: 'yarn'
+  serverless-offline-kinesis:
+    endpoint: http://localhost:4566
+    region: ${self:provider.region}
+    accessKeyId: local
+    secretAccessKey: local
 
 functions:
   stripe2kinesis:
@@ -38,6 +44,7 @@ functions:
       REGION: ${self:provider.region}
       SSM_PARAMETER_NAME_STRIPE_SECRET_KEY: ${file(./env/${self:provider.stage}.json):SSM_PARAMETER_NAME_STRIPE_SECRET_KEY}
       SSM_PARAMETER_NAME_STRIPE_ENDPOINT_SECRET: ${file(./env/${self:provider.stage}.json):SSM_PARAMETER_NAME_STRIPE_ENDPOINT_SECRET}
+      KINESIS_STREAM_NAME: ${file(./env/${self:provider.stage}.json):KINESIS_STREAM_NAME}
     events:
       - http:
           method: post
@@ -49,3 +56,14 @@ functions:
   authorizerFunc:
     name: authorizerFunc-${sls:stage}
     handler: src/authorizerFunc.handler
+
+  # ローカルの開発環境で検証用
+  # localOnlyKinesisConsumer:
+  #   name: localOnlyKinesisConsumer
+  #   handler: support/kinesis-consumer.handler
+  #   events:
+  #     - stream:
+  #         type: kinesis
+  #         arn: arn:aws:kinesis:${self:provider.region}:000000000000:stream/${file(./env/${self:provider.stage}.json):KINESIS_STREAM_NAME}
+  #         batchSize: 100
+  #         startingPosition: LATEST
