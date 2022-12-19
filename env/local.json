@@ -1,0 +1,5 @@
+{
+	"ENV": "local",
+	"SSM_PARAMETER_NAME_STRIPE_SECRET_KEY": "/stripe_webhook_local/stripe_secret_key",
+	"SSM_PARAMETER_NAME_STRIPE_ENDPOINT_SECRET": "/stripe_webhook_local/stripe_endpoint_secret"
+}

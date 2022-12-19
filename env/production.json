@@ -1,0 +1,5 @@
+{
+	"ENV": "production",
+	"SSM_PARAMETER_NAME_STRIPE_SECRET_KEY": "/stripe_webhook_production/stripe_secret_key",
+	"SSM_PARAMETER_NAME_STRIPE_ENDPOINT_SECRET": "/stripe_webhook_production/stripe_endpoint_secret"
+}
