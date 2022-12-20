@@ -43,9 +43,10 @@ export const handler = async (event) => {
 		} = stripe.webhooks.constructEvent(event.body, sig, endpointSecret);
 
 		await kinesis.putRecord({ category: 'stripe', type, data: payload });
-		return { status: 202 };
+		logger.info({ message: `sucess putRecord 'stripe' ${type} event data` });
+		return { statusCode: 200 };
 	} catch (e) {
 		logger.error({ message: e.message, stack: e.stack });
-		return { status: 500 };
+		return { statusCode: 500 };
 	}
 };
