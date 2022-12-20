@@ -42,7 +42,6 @@ export const handler = async (event) => {
 			data: { object: payload }
 		} = stripe.webhooks.constructEvent(event.body, sig, endpointSecret);
 
-		// logger.info({ type, payload });
 		await kinesis.putRecord({ category: 'stripe', type, data: payload });
 		return { status: 202 };
 	} catch (e) {

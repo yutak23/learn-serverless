@@ -1,4 +1,5 @@
-exports.handler = async (event) => {
+// eslint-disable-next-line import/prefer-default-export
+export const handler = async (event) => {
 	try {
 		await Promise.all(
 			// eslint-disable-next-line array-callback-return

@@ -30,4 +30,4 @@ jobs:
       - name: deploy
         run: |
           yarn install --frozen-lockfile
-          yarn deploy
+          sls deploy --stage production > /dev/null
