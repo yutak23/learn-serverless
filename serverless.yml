@@ -9,6 +9,7 @@ provider:
   runtime: nodejs16.x
   iam:
     role:
+      name: aws-node-serverless-stripe-webhook-role
       statements:
         - Effect: Allow
           Action:
