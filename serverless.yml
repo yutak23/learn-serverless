@@ -67,7 +67,7 @@ functions:
   authorizerFunc:
     name: authorizerFunc-${sls:stage}
     handler: src/authorizerFunc.handler
-  # KinesisのConsumer
+  # 動作確認用のKinesisのConsumer
   kinesisConsumer:
     name: kinesisConsumer
     handler: support/kinesis-consumer.handler
