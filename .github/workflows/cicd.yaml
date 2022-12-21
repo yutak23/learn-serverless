@@ -1,8 +1,9 @@
 name: cicd
 
 on:
-  push:
-    branches: [stripe-webhooks]
+  # Kinesis Data Streamは時間課金になるので、pushではDeployしないように設定
+  # push:
+  #   branches: [stripe-webhooks]
   workflow_dispatch:
 
 jobs:

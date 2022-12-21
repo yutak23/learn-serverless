@@ -1,7 +1,11 @@
-## AWS Lambda with serverless
+## aws-node-serverless-stripe-webhook
 
-## Step1 ローカル環境で Lambda を起動し、aws-cli で呼び出す
+Stripe の Webhook を、API Gateway→Lambda→Kinesis で構築するサーバレスアプリケーション
 
-以下の Qiita を参照。
+### 前提条件
 
-- https://qiita.com/yuta-katayama-23/items/3a7b0afe3de22b5fbf10
+- SSM パラメータストア
+  - /stripe_webhook_production/stripe_secret_key
+  - /stripe_webhook_production/stripe_endpoint_secret
+- Kinesis Data Stream
+  - kinesis-internal-events-production
