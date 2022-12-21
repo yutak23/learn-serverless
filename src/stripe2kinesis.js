@@ -1,7 +1,7 @@
 import { strict as assert } from 'assert';
 import { createLogger, format, transports } from 'winston';
 import Stripe from 'stripe';
-import getSsmParameters from '@/get-ssm-parameters';
+import Ssm from '@/ssm';
 import Kinesis from '@/kinesis';
 
 const logger = createLogger({
@@ -27,9 +27,8 @@ export const handler = async (event) => {
 		assert.ok(ssmParamNameEndpointSecret, 'ssmParamNameEndpointSecret must be required');
 		assert.ok(kinesisStreamName, 'kinesisStreamName must be required');
 
-		const { stripeSecretKey, endpointSecret } = await getSsmParameters({
-			stage,
-			region,
+		const ssm = new Ssm({ stage, region });
+		const { stripeSecretKey, endpointSecret } = await ssm.getParameters({
 			ssmParamNameStripeSecretKey,
 			ssmParamNameEndpointSecret
 		});
