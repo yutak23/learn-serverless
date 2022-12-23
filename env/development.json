@@ -1,0 +1,5 @@
+{
+	"ENV": "development",
+	"SSM_PARAMETER_NAME_STRIPE_SECRET_KEY": "/stripe_webhook_development/stripe_secret_key",
+	"KINESIS_STREAM_NAME": "kinesis-internal-events-development"
+}

@@ -1,0 +1,12 @@
+{
+	"category": "stripe",
+	"type": "payment_method.attached",
+	"service": "aws-node-serverless-stripe-webhook",
+	"payload": {
+		"version": 1,
+		"data": {
+			"id": "test",
+			"customer": "cus_MzVc08uHaCvDqX"
+		}
+	}
+}
