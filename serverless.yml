@@ -61,3 +61,17 @@ functions:
           batchSize: 100
           batchWindow: 5
           startingPosition: LATEST
+
+  # ローカルの開発環境での検証用
+  # stripe2kinesisLocalOnly:
+  #   name: stripe2kinesisLocalOnly
+  #   handler: support/stripe2kinesisLocalOnly.handler
+  #   timeout: 5
+  #   environment:
+  #     STRIPE_SECRET_KEY: sk_test_****
+  #     STRIPE_ENDPOINT_SECRET: whsec_****
+  #     KINESIS_STREAM_NAME: ${file(./env/${self:provider.stage}.json):KINESIS_STREAM_NAME}
+  #   events:
+  #     - http:
+  #         method: post
+  #         path: /webhook

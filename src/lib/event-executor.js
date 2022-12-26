@@ -32,7 +32,7 @@ export default class EventExecutor {
 		assert.ok(options.logger, 'logger must be required');
 
 		const { category, type, data, logger } = options;
-		if (!Object.keys(events).includes(category) && !Object.keys(events[category]).includes(type)) {
+		if (!Object.keys(events).includes(category) || !Object.keys(events[category]).includes(type)) {
 			logger.info({ message: `${category}.${type} event from kinesis skip` });
 			return;
 		}
