@@ -31,4 +31,4 @@ jobs:
       - name: deploy
         run: |
           yarn install --frozen-lockfile
-          npx sls deploy --stage production > /dev/null
+          yarn deploy
